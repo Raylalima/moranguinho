@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moranguinho</title>
+
+    <link rel="shortcut icon" href="img/logo1.png">
+
+    <!-- Fonte Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="estilo.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-mark" aria-hidden="true"></div>
+            <div class="brand-text">
+                <div class="brand-title">Moranguinho</div>
+                <div class="brand-sub">Um cantinho doce e colorido</div>
+            </div>
+        </div>
+
+        <nav class="nav d-none d-md-flex" aria-label="Navegação principal">
+            <a class="nav-link" href="#home">Início</a>
+            <a class="nav-link" href="#personagens">Personagens</a>
+            <a class="nav-link" href="#historia">História</a>
+            <a class="nav-link" href="#galeria">Galeria</a>
+            <a class="nav-link" href="#jogo">Jogo da Memória</a>
+        </nav>
+
+        <div class="top-actions d-flex gap-2">
+            <!-- Botão tema -->
+            <button class="icon-btn" id="themeToggle" aria-label="Trocar tema">
+                <i class="bi bi-sun-fill" id="themeIcon"></i>
+            </button>
+
+            <!-- Botão menu mobile -->
+            <button class="icon-btn d-md-none" id="menuBtn" aria-label="Abrir menu">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MENU MOBILE -->
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Menu mobile" hidden>
+        <a class="mobile-link" href="#home">Início</a>
+        <a class="mobile-link" href="#personagens">Personagens</a>
+        <a class="mobile-link" href="#historia">História</a>
+        <a class="mobile-link" href="#galeria">Galeria</a>
+        <a class="mobile-link" href="#jogo">Jogo da Memória</a>
+    </aside>
+
+    <main>
+        <!-- HOME -->
+        <section id="home" class="section hero">
+            <div class="hero-card">
+                <h1>Bem-vinda ao Mundo da Moranguinho 💖</h1>
+                <p>
+                    Explore personagens, história, galeria e divirta-se com o
+                    <strong>jogo da memória</strong>!
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#personagens">Ver personagens</a>
+                    <a class="btn btn-soft" href="#jogo">Jogar memória</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERSONAGENS -->
+        <section id="personagens" class="section">
+            <header class="section-head">
+                <h2>Personagens</h2>
+                <p>Conheça cada uma das amigas do universo Moranguinho.</p>
+            </header>
+
+            <div class="grid cards" id="charactersGrid"></div>
+        </section>
+
+        <!-- HISTÓRIA -->
+        <section id="historia" class="section">
+            <header class="section-head">
+                <h2>História</h2>
+                <p>Um pouquinho sobre esse mundo doce e colorido.</p>
+            </header>
+
+            <div class="story">
+                <p>
+                    A Moranguinho vive em um mundo encantado onde amizade, carinho e
+                    criatividade tornam tudo ainda mais doce.
+                </p>
+                <p>
+                    Suas amigas representam frutas deliciosas e personalidades únicas que
+                    tornam o grupo ainda mais especial.
+                </p>
+            </div>
+        </section>
+
+        <!-- GALERIA -->
+        <section id="galeria" class="section">
+            <header class="section-head">
+                <h2>Galeria</h2>
+                <p>Cartões fofinhos representando o mundo da Moranguinho.</p>
+            </header>
+
+            <div class="gallery" id="galleryGrid"></div>
+        </section>
+
+        <!-- JOGO DA MEMÓRIA -->
+        <section id="jogo" class="section game">
+            <header class="section-head">
+                <h2>Jogo da Memória</h2>
+                <p>Encontre todos os pares e vença!</p>
+            </header>
+
+            <div class="game-panel">
+                <div class="game-stats">
+                    <div><span class="stat-label">Jogadas</span> <span id="moves">0</span></div>
+                    <div><span class="stat-label">Tempo</span> <span id="timer">00:00</span></div>
+                    <div><span class="stat-label">Melhor</span> <span id="best">—</span></div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="btn btn-primary" id="startBtn">Começar</button>
+                    <button class="btn btn-soft" id="resetBtn" disabled>Reiniciar</button>
+                </div>
+            </div>
+
+            <div class="board" id="memoryBoard"></div>
+
+            <!-- Modal de vitória -->
+            <div class="modal" id="winModal" aria-hidden="true">
+                <div class="modal-box">
+                    <h3>Parabéns! 🎉</h3>
+                    <p id="winText"></p>
+                    <button class="btn btn-primary" id="closeModal">Jogar de novo</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025.
+            Curso realizado na <a href="https://afesu.org.br/unidade/veleiros/" target="_blank"> Afesu Veleiros</a>.
+            <br>
+            Desenvolvido por <a href="https://github.com/Raylalima" target="_blank">
+                <i class="bi bi-github"></i>
+                Rayla Lima.</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
